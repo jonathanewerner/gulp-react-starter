@@ -1,8 +1,13 @@
 React = require('react')
-{div} = React.DOM
+DOM = require('./utils/short-elements')
+{div} = DOM
 
-Hello = React.createClass
-    render: ->
-        (div {}, ['Hello ' + @props.name])
+Hello = require('./components/hello')
 
-React.renderComponent (Hello {name: 'jona'}), document.body
+App = React.createClass
+  render: -> div [
+    Hello name: @props.name
+    Hello name: @props.name
+  ]
+
+React.renderComponent (App name: "jona"), document.body
