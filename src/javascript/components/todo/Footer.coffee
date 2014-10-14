@@ -5,15 +5,12 @@ DOM = require('../../utils/short-elements')
 
 React = require 'react'
 ReactPropTypes = React.PropTypes
-TodoActions = require '../../actions/TodoActions'
+Actions = require '../../actions'
 
 Footer = React.createClass(
+  displayName: 'Footer'
   propTypes:
-    allTodos: ReactPropTypes.object.isRequired
-
-  # Event handler to delete all completed TODOs
-  _onClearCompletedClick: ->
-    TodoActions.destroyCompleted()
+    allTodos: ReactPropTypes.array.isRequired
 
   render: ->
     allTodos = @props.allTodos
@@ -32,7 +29,7 @@ Footer = React.createClass(
     # Undefined and thus not rendered if no completed items are left.
     if completed
       clearCompletedButton =
-        button { id: "clear-completed", onClick: @_onClearCompletedClick },
+        button { id: "clear-completed", onClick: Actions.destroyCompleted()},
           'Clear completed ' + completed
 
     return (

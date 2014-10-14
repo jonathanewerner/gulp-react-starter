@@ -40,7 +40,7 @@ gulp.task('browserify', function(callback) {
       return bundler
         .bundle()
         // Report compile errors
-        .on('error', handleErrors)
+        .on('error', console.log)
         // Use vinyl-source-stream to make the
         // stream gulp compatible. Specifiy the
         // desired output filename here.

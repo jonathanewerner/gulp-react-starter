@@ -15,9 +15,7 @@ TodoApp = require('./components/todo/TodoApp')
 RCSS.injectAll()
 
 App = React.createClass
-  render: -> div [
-    TodoApp {}
-    # Hello name: @props.name
-  ]
+  displayName: 'App'
+  render: -> TodoApp {}
 
 React.renderComponent (App {}), document.body

@@ -3,7 +3,7 @@ DOM = require('../../utils/short-elements')
 {css} = require('../../utils/helpers')
 {h1,header, p,div} = DOM
 
-TodoActions = require '../../actions/TodoActions'
+Actions = require '../../actions'
 TextInput = require './TextInput'
 
 style = css
@@ -11,8 +11,9 @@ style = css
   borderRadius: 'inherit'
 
 Header = React.createClass
+  displayName: 'Header'
   _onSave: (text) ->
-    TodoActions.create(text) if text.trim()
+    Actions.add text if text.trim()
 
   render: ->
     header {style: style}, [

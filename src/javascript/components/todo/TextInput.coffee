@@ -24,6 +24,7 @@ styles =
   newTodo: newTodo
 
 TextInput = React.createClass(
+  displayName: 'TextInput'
   propTypes:
     className: React.PropTypes.string
     placeholder: React.PropTypes.string
