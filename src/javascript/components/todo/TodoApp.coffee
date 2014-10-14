@@ -17,25 +17,17 @@ MainSection = require './MainSection'
 
 TodoApp = React.createClass
   displayName: 'TodoApp'
-  getInitialState: -> {
-    allTodos: TodoStore.getDefaultData()
-    areAllComplete: TodoStore.areAllComplete()
-  }
-  mixins: [Reflux.connect(TodoStore, 'allTodos')]
-  # mixins: [Reflux.listenTo(TodoStore, @onStatusChange)]
 
-  onStatusChange: (data) ->
-    @setState data
+  getInitialState: ->
+    todos: TodoStore.getDefaultData()
+
+  mixins: [Reflux.connect(TodoStore, 'todos')]
 
   render: ->
-    console.log 'render todoapp'
-    console.log @state.areAllComplete
-
     div [
       Header {}
-      MainSection {allTodos: @state.allTodos, areAllComplete: @state.areAllComplete}
-      Footer {allTodos: @state.allTodos}
-      # input {type: 'button', onClick: Action.foo}, 'click'
+      MainSection {allTodos: @state.todos, areAllComplete: TodoStore.areAllComplete()}
+      Footer {allTodos: @state.todos}
     ]
 
 

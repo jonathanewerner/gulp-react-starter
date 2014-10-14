@@ -25,7 +25,7 @@ MainSection = React.createClass
     section {id: 'main'}, [
       input {id: 'toggle-all', type: 'checkbox', \
              onChange: Actions.toggleAll, \
-             checked: if @props.areAllComplete then 'checked' else ''}
+             checked: if not @props.areAllComplete then 'checked' else ''}
       label {htmlFor: 'toggle-all'}, 'Mark all as complete'
       ul {id: 'todo-list'}, todos
     ]
